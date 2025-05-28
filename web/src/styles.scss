@@ -1,0 +1,70 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background: #fafafa }
+
+.mat-grid-tile {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 1px -1px #0003,0 1px 1px #00000024,0 1px 3px #0000001f;
+}
+
+.mat-grid-tile-content {
+  align-items: flex-start !important;
+  height: calc(100% - 32px) !important;
+  padding: 16px !important;
+  width: calc(100% - 32px) !important;
+}
+
+.w-mc {
+  width: max-content;
+}
+.h-mc {
+  height: max-content;
+}
+
+.legend-labels, .legend-title {
+  width: max-content !important;
+}
+
+.custom-tooltip {
+  position: absolute;
+  background-color: rgba(0,0,0,0.74);
+  color: white;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.custom-card {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 1px 1px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 2px #0000001f;
+}
+
+.position-below-agricultural .chart-legend {
+  padding-left: 165px;
+}
+.position-below-electricity .chart-legend {
+  padding-left: 100px;
+}
+.position-below-industry .chart-legend {
+  padding-left: 125px;
+}
+
+.mat-drawer-inner-container {
+  display: flex;
+  align-items: center;
+}
+
+circle {
+  r: 10px;
+}
+
+a.active {
+  background-color: rgb(0, 69, 143);
+  color: rgb(215, 227, 255);
+}

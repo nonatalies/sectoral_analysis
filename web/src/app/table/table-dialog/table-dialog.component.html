@@ -1,0 +1,14 @@
+<span mat-dialog-title>Сравнение комплексного показателя развития</span>
+<mat-dialog-content>
+    <ngx-charts-box-chart
+      [view]="[500, 400]"
+      [results]="data"
+      [roundDomains]="true"
+      strokeColor="#000"
+      [strokeWidth]="1"
+      [gradient]="false">
+    </ngx-charts-box-chart>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Закрыть</button>
+</mat-dialog-actions>

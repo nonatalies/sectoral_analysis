@@ -1,0 +1,259 @@
+<div (mousemove)="onMouseMove($event)" class="d-flex w-100" style="padding: 16px 64px 0 64px;">
+  <mat-tab-group headerPosition="below" class="w-100">
+    <mat-tab label="Сельское хозяйство">
+      <div class="d-flex justify-content-between overflow-hidden">
+        <div class="d-flex flex-column gap-4 pb-3">
+          <div class="d-flex flex-column custom-card" style="width: 640px;">
+            <span class="mb-3">Посевные площади в тыс.&nbsp;га (федеральные округа)</span>
+            <ngx-charts-line-chart
+              style="zoom: 0.9"
+              [view]="view"
+              [results]="lineData1"
+              [xAxis]="true"
+              [yAxis]="true"
+              [legend]="true"
+              legendTitle=""
+              [roundDomains]="true"
+              [autoScale]="true"
+              [animations]="true">
+            </ngx-charts-line-chart>
+          </div>
+          <div class="d-flex flex-column custom-card" style="width: 640px;">
+            <span class="mb-3">Индекс сельского хозяйства (федеральные округа)</span>
+            <ngx-charts-line-chart
+              style="zoom: 0.9"
+              [view]="view"
+              [results]="lineData2"
+              [xAxis]="true"
+              [yAxis]="true"
+              [legend]="true"
+              legendTitle=""
+              [roundDomains]="true"
+              [autoScale]="true"
+              [animations]="true">
+            </ngx-charts-line-chart>
+          </div>
+        </div>
+        <div class="d-flex flex-column gap-4 pb-3">
+          <div class="d-flex flex-column custom-card" style="width: 640px;">
+            <ngx-charts-bubble-chart
+              class="py-4"
+              style="zoom: 0.9"
+              [view]="smallView"
+              [results]="bubbleData1"
+              [xAxis]="true"
+              [yAxis]="true"
+              [legend]="true"
+              [roundDomains]="true"
+              [showXAxisLabel]="true"
+              [showYAxisLabel]="true"
+              [xAxisLabel]="'Темп роста (%)'"
+              [yAxisLabel]="'Тренд (наклон)'"
+              [tooltipDisabled]="true"
+              [animations]="true"
+              (activate)="onActivate($event, bubbleData1)"
+              (deactivate)="onDeactivate()"
+              legendTitle=""
+              [legendPosition]="LegendPosition.Right">
+            </ngx-charts-bubble-chart>
+          </div>
+          <div class="d-flex flex-column custom-card" style="width: 640px;">
+            <ngx-charts-bubble-chart
+              class="py-4"
+              style="zoom: 0.9"
+              [view]="smallView"
+              [results]="bubbleData2"
+              [xAxis]="true"
+              [yAxis]="true"
+              [legend]="true"
+              [roundDomains]="true"
+              [showXAxisLabel]="true"
+              [showYAxisLabel]="true"
+              [xAxisLabel]="'Темп роста (%)'"
+              [yAxisLabel]="'Тренд (наклон)'"
+              [tooltipDisabled]="true"
+              [animations]="true"
+              (activate)="onActivate($event, bubbleData2)"
+              (deactivate)="onDeactivate()"
+              legendTitle=""
+              [legendPosition]="LegendPosition.Right">
+            </ngx-charts-bubble-chart>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Промышленность">
+      <div class="d-flex justify-content-between overflow-hidden">
+        <div class="d-flex flex-column gap-4 pb-3">
+          <div class="d-flex flex-column custom-card" style="width: 640px;">
+            <span class="mb-3">Добыча полезных ископаемых в млн.&nbsp;руб (федеральные округа)</span>
+            <ngx-charts-line-chart
+              style="zoom: 0.9"
+              [view]="view"
+              [results]="lineData3"
+              [xAxis]="true"
+              [yAxis]="true"
+              [legend]="true"
+              legendTitle=""
+              [roundDomains]="true"
+              [autoScale]="true"
+              [animations]="true">
+            </ngx-charts-line-chart>
+          </div>
+          <div class="d-flex flex-column custom-card" style="width: 640px;">
+            <span class="mb-3">Индекс промышленного производства (федеральные округа)</span>
+            <ngx-charts-line-chart
+              style="zoom: 0.9"
+              [view]="view"
+              [results]="lineData4"
+              [xAxis]="true"
+              [yAxis]="true"
+              [legend]="true"
+              legendTitle=""
+              [roundDomains]="true"
+              [autoScale]="true"
+              [animations]="true">
+            </ngx-charts-line-chart>
+          </div>
+        </div>
+        <div class="d-flex flex-column gap-4 pb-3">
+          <div class="d-flex flex-column custom-card" style="width: 640px;">
+            <ngx-charts-bubble-chart
+              class="py-4"
+              style="zoom: 0.9"
+              [view]="smallView"
+              [results]="bubbleData3"
+              [xAxis]="true"
+              [yAxis]="true"
+              [legend]="true"
+              [roundDomains]="true"
+              [showXAxisLabel]="true"
+              [showYAxisLabel]="true"
+              [xAxisLabel]="'Темп роста (%)'"
+              [yAxisLabel]="'Тренд (наклон)'"
+              [tooltipDisabled]="true"
+              [animations]="true"
+              (activate)="onActivate($event, bubbleData3)"
+              (deactivate)="onDeactivate()"
+              legendTitle=""
+              [legendPosition]="LegendPosition.Right">
+            </ngx-charts-bubble-chart>
+          </div>
+          <div class="d-flex flex-column custom-card" style="width: 640px;">
+            <ngx-charts-bubble-chart
+              class="py-4"
+              style="zoom: 0.9"
+              [view]="smallView"
+              [results]="bubbleData4"
+              [xAxis]="true"
+              [yAxis]="true"
+              [legend]="true"
+              [roundDomains]="true"
+              [showXAxisLabel]="true"
+              [showYAxisLabel]="true"
+              [xAxisLabel]="'Темп роста (%)'"
+              [yAxisLabel]="'Тренд (наклон)'"
+              [tooltipDisabled]="true"
+              [animations]="true"
+              (activate)="onActivate($event, bubbleData4)"
+              (deactivate)="onDeactivate()"
+              legendTitle=""
+              [legendPosition]="LegendPosition.Right">
+            </ngx-charts-bubble-chart>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Электроэнергия">
+      <div class="d-flex justify-content-between overflow-hidden">
+        <div class="d-flex flex-column gap-4 pb-3">
+          <div class="d-flex flex-column custom-card" style="width: 640px;">
+            <span class="mb-3">Потребление электроэнергии в млн.&nbsp;кВт·ч (федеральные округа)</span>
+            <ngx-charts-line-chart
+              style="zoom: 0.9"
+              [view]="view"
+              [results]="lineData5"
+              [xAxis]="true"
+              [yAxis]="true"
+              [legend]="true"
+              legendTitle=""
+              [roundDomains]="true"
+              [autoScale]="true"
+              [animations]="true">
+            </ngx-charts-line-chart>
+          </div>
+          <div class="d-flex flex-column custom-card" style="width: 640px;">
+            <span class="mb-3">Производство электроэнергии на душу в кВт·ч/чел (федеральные округа)</span>
+            <ngx-charts-line-chart
+              style="zoom: 0.9"
+              [view]="view"
+              [results]="lineData6"
+              [xAxis]="true"
+              [yAxis]="true"
+              [legend]="true"
+              legendTitle=""
+              [roundDomains]="true"
+              [autoScale]="true"
+              [animations]="true">
+            </ngx-charts-line-chart>
+          </div>
+        </div>
+        <div class="d-flex flex-column gap-4 pb-3">
+          <div class="d-flex flex-column custom-card" style="width: 640px;">
+            <ngx-charts-bubble-chart
+              class="py-4"
+              style="zoom: 0.9"
+              [view]="smallView"
+              [results]="bubbleData5"
+              [xAxis]="true"
+              [yAxis]="true"
+              [legend]="true"
+              [roundDomains]="true"
+              [showXAxisLabel]="true"
+              [showYAxisLabel]="true"
+              [xAxisLabel]="'Темп роста (%)'"
+              [yAxisLabel]="'Тренд (наклон)'"
+              [tooltipDisabled]="true"
+              [animations]="true"
+              (activate)="onActivate($event, bubbleData5)"
+              (deactivate)="onDeactivate()"
+              legendTitle=""
+              [legendPosition]="LegendPosition.Right">
+            </ngx-charts-bubble-chart>
+          </div>
+          <div class="d-flex flex-column custom-card" style="width: 640px;">
+            <ngx-charts-bubble-chart
+              class="py-4"
+              style="zoom: 0.9"
+              [view]="smallView"
+              [results]="bubbleData6"
+              [xAxis]="true"
+              [yAxis]="true"
+              [legend]="true"
+              [roundDomains]="true"
+              [showXAxisLabel]="true"
+              [showYAxisLabel]="true"
+              [xAxisLabel]="'Темп роста (%)'"
+              [yAxisLabel]="'Тренд (наклон)'"
+              [tooltipDisabled]="true"
+              [animations]="true"
+              (activate)="onActivate($event, bubbleData6)"
+              (deactivate)="onDeactivate()"
+              legendTitle=""
+              [legendPosition]="LegendPosition.Right">
+            </ngx-charts-bubble-chart>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+
+
+<div *ngIf="tooltipData" class="custom-tooltip" [ngStyle]="{ top: mouseY + 'px', left: mouseX + 'px' }">
+  <div class="d-flex flex-column">
+    <span class="w-100 text-center">{{ tooltipData.name }}</span>
+    <span class="w-100 text-center" style="font-size: 14px;">рост: {{ tooltipData.series[0].x }} %</span>
+    <span class="w-100 text-center" style="font-size: 14px;">наклон: {{ tooltipData.series[0].y }}</span>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+<mat-drawer-container class="h-100 w-100">
+  <mat-drawer mode="side" position="end" opened style="width: 74px; border-radius: 0">
+    <div class="d-flex flex-column gap-3 p-3 w-mc align-items-center">
+      <a mat-mini-fab routerLink="/agricultural" routerLinkActive="active" matTooltip="Сельское хозяйство">
+        <mat-icon fontSet="material-symbols-outlined">eco</mat-icon>
+      </a>
+      <a mat-mini-fab routerLink="/industry" routerLinkActive="active" matTooltip="Промышленность">
+        <mat-icon fontSet="material-symbols-outlined">factory</mat-icon>
+      </a>
+      <a mat-mini-fab routerLink="/electricity" routerLinkActive="active" matTooltip="Электроэнергия">
+        <mat-icon fontSet="material-symbols-outlined">emoji_objects</mat-icon>
+      </a>
+      <a mat-mini-fab routerLink="/stat" routerLinkActive="active" matTooltip="Динамика">
+        <mat-icon fontSet="material-symbols-outlined">monitoring</mat-icon>
+      </a>
+      <a mat-mini-fab routerLink="/table" routerLinkActive="active" matTooltip="Данные">
+        <mat-icon fontSet="material-symbols-outlined">table_view</mat-icon>
+      </a>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet/>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+

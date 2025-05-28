@@ -1,0 +1,66 @@
+<div class="overflow-hidden h-100" style="padding: 16px">
+  <div class="d-flex flex-column custom-card overflow-hidden h-100" style="zoom: 0.8">
+    <div class="d-flex">
+    <mat-form-field appearance="outline" style="zoom: 0.9" class="flex-grow-1">
+      <mat-icon matPrefix>search</mat-icon>
+      <input matInput placeholder="Поиск" (keyup)="applyFilter($event)"/>
+    </mat-form-field>
+      <button mat-mini-fab class="ms-3 mt-1" (click)="openDialog()">
+        <mat-icon fontSet="material-symbols-outlined">insert_chart</mat-icon>
+      </button>
+    </div>
+    <mat-table [dataSource]="dataSource" matSort class="overflow-auto">
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="name"> Регион</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element['Регион'] }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="type">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="type"> Тип</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element['Тип'] }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="number">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="number"> Комплексный показатель</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element['Комплексный показатель'] }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="value1">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="value1"> Посевные площади (тыс. га)</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element['Посевные площади (тыс. га)'] }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="value2">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="value2"> Индекс сельского хозяйства</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element['Индекс сельского хозяйства'] }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="value3">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="value3"> Добыча полезных ископаемых (млн руб)
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <ng-container *ngIf="element['Добыча полезных ископаемых (млн руб)'] === null"> —</ng-container>
+          <ng-container *ngIf="element['Добыча полезных ископаемых (млн руб)'] !== null">
+            {{ element['Добыча полезных ископаемых (млн руб)'] }}
+          </ng-container>
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="value4">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="value4"> Индекс пром. производства</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element['Индекс пром. производства'] }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="value5">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="value5"> Потребление электроэнергии (млн кВт·ч)
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element['Потребление электроэнергии (млн кВт·ч)'] }}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="value6">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="value6"> Производство электроэнергии на душу (кВт·ч/чел)
+        </mat-header-cell>
+        <mat-cell
+          *matCellDef="let element"> {{ element['Производство электроэнергии на душу (кВт·ч/чел)'].toFixed(1) }}
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"
+                      style="background-color: white; color: rgb(0, 69, 143); font-size: 16px; font-weight: 400; line-height: 16px;"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" style="background-color: white; font-size: 15px; line-height: 15px;"
+               [ngStyle]="row['Тип'] === 'Новый'? { backgroundColor: 'rgba(215, 227, 255, 0.2)'} : {}"></mat-row>
+    </mat-table>
+  </div>
+</div>

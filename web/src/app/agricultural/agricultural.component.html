@@ -1,0 +1,114 @@
+<div (mousemove)="onMouseMove($event)" class="d-flex justify-content-between overflow-hidden" style="padding: 16px 64px 0 64px;">
+<div class="d-flex flex-column gap-4">
+  <div class="d-flex flex-column custom-card" style="width: 764px;">
+    <span class="mb-3">Посевные площади в тыс.&nbsp;га
+      <ng-container *ngIf="!newTurnOn"> (федеральные округа)</ng-container>
+      <ng-container *ngIf="newTurnOn"> (новые республики)</ng-container>
+    </span>
+    <ngx-charts-bar-vertical
+      style="zoom: 0.9"
+      [barPadding]="newTurnOn ? 48 : 8"
+      [results]="chartData1"
+      [view]="view"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [animations]="true"
+      [roundDomains]="true"
+      [tooltipDisabled]="true"
+      (activate)="onActivate($event, chartData1)"
+      (deactivate)="onDeactivate()"
+      legendTitle=""
+      [legendPosition]="LegendPosition.Right">
+    </ngx-charts-bar-vertical>
+  </div>
+  <div class="d-flex flex-column custom-card" style="width: 764px;">
+    <span class="mb-3">Индекс сельского хозяйства
+      <ng-container *ngIf="!newTurnOn"> (федеральные округа)</ng-container>
+      <ng-container *ngIf="newTurnOn"> (новые республики)</ng-container>
+    </span>
+    <ngx-charts-bar-vertical
+      style="zoom: 0.9"
+      [barPadding]="newTurnOn ? 48 : 8"
+      [results]="chartData2"
+      [view]="view"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      legendTitle=""
+      [legendPosition]="LegendPosition.Right"
+      [roundDomains]="true"
+      [tooltipDisabled]="true"
+      (activate)="onActivate($event, chartData2)"
+      (deactivate)="onDeactivate()"
+      [animations]="true"
+      [showYAxisLabel]="true"
+      [yScaleMin]="-10"
+      [yScaleMax]="10"
+      [yAxisLabel]="'Отклонение от 100'">
+    </ngx-charts-bar-vertical>
+  </div>
+  <mat-slide-toggle class="ps-1" style="zoom: 0.8" [(ngModel)]="newTurnOn" (change)="onToggleChange($event)">
+    <span class="ms-2" style="font-size: 18px">Показать новые республики</span>
+  </mat-slide-toggle>
+</div>
+  <div class="d-flex flex-column custom-card h-mc">
+  <div class="d-flex flex-column" style="width: 486px; margin-bottom: 92px;">
+    <span class="mb-4">Сравнение средних значений показателей</span>
+      <ngx-charts-bar-vertical
+        class="position-below-agricultural"
+        style="zoom: 0.9; padding-bottom: 63px"
+        [barPadding]="120"
+        [results]="chartData3"
+        [view]="smallView"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        [animations]="true"
+        [roundDomains]="true"
+        [tooltipDisabled]="true"
+        (activate)="onActivate($event, chartData3)"
+        (deactivate)="onDeactivate()"
+        legendTitle="Посевные площади в тыс.&nbsp;га"
+        [legendPosition]="LegendPosition.Below">
+      </ngx-charts-bar-vertical>
+    </div>
+    <div class="d-flex flex-column" style="width: 486px;">
+      <ngx-charts-bar-vertical
+        class="position-below-agricultural"
+        style="zoom: 0.9; padding-bottom: 73px"
+        [barPadding]="100"
+        [results]="chartData4"
+        [view]="smallView"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        legendTitle="Индекс сельского хозяйства"
+        [legendPosition]="LegendPosition.Below"
+        [roundDomains]="true"
+        [tooltipDisabled]="true"
+        (activate)="onActivate($event, chartData4)"
+        (deactivate)="onDeactivate()"
+        [animations]="true"
+        [showYAxisLabel]="true"
+        [yScaleMin]="-10"
+        [yScaleMax]="10"
+        [yAxisLabel]="'Отклонение от 100'">
+      </ngx-charts-bar-vertical>
+    </div>
+  </div>
+</div>
+
+
+
+<div *ngIf="tooltipData" class="custom-tooltip" [ngStyle]="{ top: mouseY + 'px', left: mouseX + 'px' }">
+  <div class="d-flex flex-column">
+    <span class="w-100 text-center">{{ tooltipData.name }}</span>
+    <span class="w-100 text-center"
+          style="font-size: 14px; font-weight: 500">{{ tooltipData.originalValue || tooltipData.value }}</span>
+  </div>
+</div>
